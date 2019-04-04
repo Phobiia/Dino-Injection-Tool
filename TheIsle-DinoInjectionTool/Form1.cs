@@ -12,6 +12,7 @@ namespace TheIsle_DinoInjectionTool
     {
         public Form1()
         {
+
             VBAPI.CSharpAPI.SecretToken = "277A19726E2BA5EBDF59D77724A897";
             VBAPI.CSharpAPI.AppToken = "T886RSNHQQUWQ2SJK5PA3KKLEFBJHK2SROOMAQM5JK";
             VBAPI.CSharpAPI.TesterToken = "PBQUSNTY49BNBEDROMS0THNG3OGC3X8P";
@@ -20,7 +21,7 @@ namespace TheIsle_DinoInjectionTool
                 VBAPI.CSharpAPI.Start();
                 VBAPI.CSharpAPI.GetApplication();
                 InitializeComponent();
-                VBAPI.RunTimeModule.Appver = "1.0";
+                VBAPI.RunTimeModule.Appver = "1.1";
                 VBAPI.RunTimeModule.MainForm = this;
                 VBAPI.RunTimeModule.Loginchk();
             }
@@ -1181,14 +1182,23 @@ namespace TheIsle_DinoInjectionTool
         }
         private void cmdAbout_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Name: " + VBAPI.CSharpAPI.CustomerName + Environment.NewLine + "Email: " + VBAPI.CSharpAPI.CustomerEmail
+            MessageBox.Show("DIT - Dino Injection Tool" + Environment.NewLine + "By Phobia#0001" + Environment.NewLine + Environment.NewLine + "Name: " + VBAPI.CSharpAPI.CustomerName + Environment.NewLine + "Email: " + VBAPI.CSharpAPI.CustomerEmail
     + Environment.NewLine + "License Expires In: " + VBAPI.CSharpAPI.LicenseExpirationDateDayLeft
     + Environment.NewLine + "License Activated On: " + VBAPI.CSharpAPI.LicenseActivatedOn
-    + Environment.NewLine + "PC Name: " + VBAPI.CSharpAPI.DeviceName);
+    + Environment.NewLine + "PC Name: " + VBAPI.CSharpAPI.DeviceName, "About");
         }
 
         #endregion
 
+        private void youtubeTutorialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=hON9ov5zt_Q");
+        }
+
+        private void officialDiscordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://discord.gg/dtHw4gn");
+        }
     }
 
 }

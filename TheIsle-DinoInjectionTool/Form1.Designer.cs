@@ -50,6 +50,9 @@
             this.rdoSurvival = new System.Windows.Forms.RadioButton();
             this.cboProfile = new System.Windows.Forms.ComboBox();
             this.lblProgress = new System.Windows.Forms.Label();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.youtubeTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.officialDiscordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -60,7 +63,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.optionsToolStripMenuItem,
-            this.cmdAbout});
+            this.cmdAbout,
+            this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(314, 24);
@@ -278,6 +282,29 @@
             this.lblProgress.Text = "lblProgress";
             this.lblProgress.Visible = false;
             // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.youtubeTutorialToolStripMenuItem,
+            this.officialDiscordToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "&Help";
+            // 
+            // youtubeTutorialToolStripMenuItem
+            // 
+            this.youtubeTutorialToolStripMenuItem.Name = "youtubeTutorialToolStripMenuItem";
+            this.youtubeTutorialToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.youtubeTutorialToolStripMenuItem.Text = "Youtube Tutorial";
+            this.youtubeTutorialToolStripMenuItem.Click += new System.EventHandler(this.youtubeTutorialToolStripMenuItem_Click);
+            // 
+            // officialDiscordToolStripMenuItem
+            // 
+            this.officialDiscordToolStripMenuItem.Name = "officialDiscordToolStripMenuItem";
+            this.officialDiscordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.officialDiscordToolStripMenuItem.Text = "Official Discord";
+            this.officialDiscordToolStripMenuItem.Click += new System.EventHandler(this.officialDiscordToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AcceptButton = this.btnOpen;
@@ -341,6 +368,9 @@
         private System.Windows.Forms.ComboBox cboProfile;
         private System.Windows.Forms.Label lblProgress;
         private System.Windows.Forms.ToolStripMenuItem cmdAbout;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem youtubeTutorialToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem officialDiscordToolStripMenuItem;
     }
 }
 
