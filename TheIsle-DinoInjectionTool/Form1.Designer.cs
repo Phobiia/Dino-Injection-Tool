@@ -32,6 +32,7 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmdAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.btnOpen = new System.Windows.Forms.Button();
             this.txtSteamID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,7 +50,6 @@
             this.rdoSurvival = new System.Windows.Forms.RadioButton();
             this.cboProfile = new System.Windows.Forms.ComboBox();
             this.lblProgress = new System.Windows.Forms.Label();
-            this.cmdAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -88,6 +88,13 @@
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.optionsToolStripMenuItem.Text = "&Options";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
+            // 
+            // cmdAbout
+            // 
+            this.cmdAbout.Name = "cmdAbout";
+            this.cmdAbout.Size = new System.Drawing.Size(52, 20);
+            this.cmdAbout.Text = "&About";
+            this.cmdAbout.Click += new System.EventHandler(this.cmdAbout_Click);
             // 
             // btnOpen
             // 
@@ -271,12 +278,6 @@
             this.lblProgress.Text = "lblProgress";
             this.lblProgress.Visible = false;
             // 
-            // cmdAbout
-            // 
-            this.cmdAbout.Name = "cmdAbout";
-            this.cmdAbout.Size = new System.Drawing.Size(52, 20);
-            this.cmdAbout.Text = "&About";
-            // 
             // Form1
             // 
             this.AcceptButton = this.btnOpen;
@@ -303,7 +304,7 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "The Isle - Dino Injection Utility";
+            this.Text = "The Isle - Dino Injection Tool";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

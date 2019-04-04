@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Net;
 using System.IO;
+using _961CSharpApi;
 
 namespace TheIsle_DinoInjectionTool
 {
@@ -11,7 +12,19 @@ namespace TheIsle_DinoInjectionTool
     {
         public Form1()
         {
-            InitializeComponent();
+            VBAPI.CSharpAPI.SecretToken = "277A19726E2BA5EBDF59D77724A897";
+            VBAPI.CSharpAPI.AppToken = "T886RSNHQQUWQ2SJK5PA3KKLEFBJHK2SROOMAQM5JK";
+            VBAPI.CSharpAPI.TesterToken = "PBQUSNTY49BNBEDROMS0THNG3OGC3X8P";
+            if (VBAPI.CSharpAPI.Systemcheck() == VBAPI.CSharpAPI.InitializeSecurity)
+            {
+                VBAPI.CSharpAPI.Start();
+                VBAPI.CSharpAPI.GetApplication();
+                InitializeComponent();
+                VBAPI.RunTimeModule.Appver = "1.0";
+                VBAPI.RunTimeModule.MainForm = this;
+                VBAPI.RunTimeModule.Loginchk();
+            }
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -1166,12 +1179,13 @@ namespace TheIsle_DinoInjectionTool
             txtSteamID.Focus();
             bIsOpen = false;
         }
-
-        #endregion
-
-        #region Licensing
-
-
+        private void cmdAbout_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Name: " + VBAPI.CSharpAPI.CustomerName + Environment.NewLine + "Email: " + VBAPI.CSharpAPI.CustomerEmail
+    + Environment.NewLine + "License Expires In: " + VBAPI.CSharpAPI.LicenseExpirationDateDayLeft
+    + Environment.NewLine + "License Activated On: " + VBAPI.CSharpAPI.LicenseActivatedOn
+    + Environment.NewLine + "PC Name: " + VBAPI.CSharpAPI.DeviceName);
+        }
 
         #endregion
 

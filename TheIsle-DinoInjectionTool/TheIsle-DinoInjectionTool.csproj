@@ -48,17 +48,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LicenseSolution">
-      <HintPath>..\..\LicenseSolution\LicenseSolution\bin\Release\LicenseSolution.dll</HintPath>
-    </Reference>
-    <Reference Include="QLicense">
-      <HintPath>..\..\..\..\Downloads\Core\QLicense\bin\Debug\QLicense.dll</HintPath>
-    </Reference>
-    <Reference Include="QLicense.Windows.Controls">
-      <HintPath>..\..\..\..\Downloads\Core\ActivationControls4Win\bin\Release\QLicense.Windows.Controls.dll</HintPath>
-    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
