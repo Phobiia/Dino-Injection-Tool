@@ -5,6 +5,8 @@ using System.Windows.Forms;
 using System.Net;
 using System.IO;
 using _961CSharpApi;
+using System.Reflection;
+using System.Threading;
 
 namespace TheIsle_DinoInjectionTool
 {
@@ -12,7 +14,11 @@ namespace TheIsle_DinoInjectionTool
     {
         public Form1()
         {
+            
+            //InitializeComponent();
 
+
+            
             VBAPI.CSharpAPI.SecretToken = "277A19726E2BA5EBDF59D77724A897";
             VBAPI.CSharpAPI.AppToken = "T886RSNHQQUWQ2SJK5PA3KKLEFBJHK2SROOMAQM5JK";
             VBAPI.CSharpAPI.TesterToken = "PBQUSNTY49BNBEDROMS0THNG3OGC3X8P";
@@ -26,9 +32,16 @@ namespace TheIsle_DinoInjectionTool
                 VBAPI.RunTimeModule.Loginchk();
             }
 
+            
+            
         }
         private void Form1_Load(object sender, EventArgs e)
-        {
+        {            
+            if (IsAlreadyRunning() == true)
+            {
+                MessageBox.Show("There is already an instance of DIT runnning.");
+                Application.Exit();
+            }
             rdoCarni.Checked = true;
             rdoSurvival.Checked = true;
             cboProfile.SelectedIndex = 0;
@@ -794,6 +807,7 @@ namespace TheIsle_DinoInjectionTool
             }
             lblProgress.Text = "Save Opened!";
         }
+        
         #endregion
 
         #region String Formatting
@@ -904,6 +918,19 @@ namespace TheIsle_DinoInjectionTool
             string strRemoveEnd = ",";
             strLegBreak = strGrowth.Replace(strRemoveStart, "");
             strLegBreak = strGrowth.Replace(strRemoveEnd, "");
+        }
+        private static bool IsAlreadyRunning()
+        {
+            string strLoc = Assembly.GetExecutingAssembly().Location;
+            FileSystemInfo fileInfo = new FileInfo(strLoc);
+            string sExeName = fileInfo.Name;
+            bool bCreatedNew;
+
+            Mutex mutex = new Mutex(true, "Global\\" + sExeName, out bCreatedNew);
+            if (bCreatedNew)
+                mutex.ReleaseMutex();
+
+            return !bCreatedNew;
         }
         #endregion
 
@@ -1187,18 +1214,18 @@ namespace TheIsle_DinoInjectionTool
     + Environment.NewLine + "License Activated On: " + VBAPI.CSharpAPI.LicenseActivatedOn
     + Environment.NewLine + "PC Name: " + VBAPI.CSharpAPI.DeviceName, "About");
         }
-
-        #endregion
-
         private void youtubeTutorialToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=hON9ov5zt_Q");
         }
-
         private void officialDiscordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://discord.gg/dtHw4gn");
         }
+
+        #endregion
+
+
     }
 
 }

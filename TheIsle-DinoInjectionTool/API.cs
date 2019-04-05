@@ -1563,7 +1563,7 @@ namespace _961CSharpApi
             public static void Control961()
             {
 
-                Login961.Text = "961API - License Client";
+                Login961.Text = "DIT - License Client";
                 Login961.Width = 635;
                 Login961.Height = 221;
                 Login961.MaximumSize = new Size(635, 221);
@@ -1742,12 +1742,21 @@ namespace _961CSharpApi
                 StrafeTabControl1.Controls.Add(TabPage2);
                 StrafeTabControl1.Controls.Add(TabPage3);
 
+                Login961.FormClosed += Login961_FormClosed;
                 Login961.Show();
                 logchk = "YES";
                 MainForm.Opacity = 0;
                 MainForm.ShowInTaskbar = false;
                 GetAppName961();
 
+            }
+
+            private static void Login961_FormClosed(object sender, FormClosedEventArgs e)
+            {
+                if (MainForm.Opacity == 0)
+                {
+                    Application.Exit();
+                }
             }
 
             private static void Activate961(object sender, EventArgs e)
@@ -1859,7 +1868,7 @@ namespace _961CSharpApi
                         (new Computer()).Registry.SetValue("HKEY_CURRENT_USER\\961API" + "-" + appname961 + "\\activated", "Check", "True");
                         MainForm.Opacity = 1;
                         MainForm.ShowInTaskbar = true;
-                        Login961.Close();
+                        Login961.Close();                        
                         CSharpAPI.Livesystemcheck();
                     }
                     else if (CSharpAPI.CheckLicense(License) == (CSharpAPI.Éõö(Convert.ToString(CSharpAPI.Éëê("AJ1Ncgc+CFQrgIhAyMcR8JYBqdfVBO1ZcgCJcgCJ").Replace("%22", "\"").Replace("%C2%A3", "£").Replace("%24", "$").Replace("%25", "%").Replace("%5E", "^").Replace("%26", "&").Replace("%3D", "=").Replace("%2B", "+").Replace("%5B", "[").Replace("%7B", "{").Replace("%5D", "]").Replace("%7D", "}").Replace("%3B", ";").Replace("%40", "@").Replace("%23", "#").Replace("%2C", ",").Replace("%3C", "<").Replace("%3E", ">").Replace("%5C", "\\").Replace("%7C", "|").Replace("%20", " ").Replace("%3A", ":").Replace("%2F", "/").Replace("%3F", "?")))))
