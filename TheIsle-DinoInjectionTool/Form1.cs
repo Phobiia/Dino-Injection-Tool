@@ -4,7 +4,6 @@ using System.Text;
 using System.Windows.Forms;
 using System.Net;
 using System.IO;
-using _961CSharpApi;
 using System.Reflection;
 using System.Threading;
 
@@ -14,26 +13,9 @@ namespace TheIsle_DinoInjectionTool
     {
         public Form1()
         {
-            
-            //InitializeComponent();
 
+            InitializeComponent();
 
-            
-            VBAPI.CSharpAPI.SecretToken = "277A19726E2BA5EBDF59D77724A897";
-            VBAPI.CSharpAPI.AppToken = "T886RSNHQQUWQ2SJK5PA3KKLEFBJHK2SROOMAQM5JK";
-            VBAPI.CSharpAPI.TesterToken = "PBQUSNTY49BNBEDROMS0THNG3OGC3X8P";
-            if (VBAPI.CSharpAPI.Systemcheck() == VBAPI.CSharpAPI.InitializeSecurity)
-            {
-                VBAPI.CSharpAPI.Start();
-                VBAPI.CSharpAPI.GetApplication();
-                InitializeComponent();
-                VBAPI.RunTimeModule.Appver = "1.1";
-                VBAPI.RunTimeModule.MainForm = this;
-                VBAPI.RunTimeModule.Loginchk();
-            }
-
-            
-            
         }
         private void Form1_Load(object sender, EventArgs e)
         {            
@@ -71,6 +53,9 @@ namespace TheIsle_DinoInjectionTool
         string strNewClass = "";
         string strNewGender = "";
         string strNewYPosition = "";
+
+        //registry locations
+
 
 
 
@@ -807,6 +792,14 @@ namespace TheIsle_DinoInjectionTool
             }
             lblProgress.Text = "Save Opened!";
         }
+        private void GetReg()
+        {
+
+        }
+        private void SetReg()
+        {
+
+        }
         
         #endregion
 
@@ -1209,10 +1202,7 @@ namespace TheIsle_DinoInjectionTool
         }
         private void cmdAbout_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("DIT - Dino Injection Tool" + Environment.NewLine + "By Phobia#0001" + Environment.NewLine + Environment.NewLine + "Name: " + VBAPI.CSharpAPI.CustomerName + Environment.NewLine + "Email: " + VBAPI.CSharpAPI.CustomerEmail
-    + Environment.NewLine + "License Expires In: " + VBAPI.CSharpAPI.LicenseExpirationDateDayLeft
-    + Environment.NewLine + "License Activated On: " + VBAPI.CSharpAPI.LicenseActivatedOn
-    + Environment.NewLine + "PC Name: " + VBAPI.CSharpAPI.DeviceName, "About");
+            MessageBox.Show("DIT - Dino Injection Tool" + Environment.NewLine + "By Phobia#0001" + Environment.NewLine + "App Version: 1.2", "About");
         }
         private void youtubeTutorialToolStripMenuItem_Click(object sender, EventArgs e)
         {
