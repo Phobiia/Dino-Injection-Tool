@@ -190,7 +190,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClear;
-            this.ClientSize = new System.Drawing.Size(226, 280);
+            this.ClientSize = new System.Drawing.Size(226, 285);
             this.Controls.Add(this.cboProfile);
             this.Controls.Add(this.txtConnectPort);
             this.Controls.Add(this.lblConnectPort);

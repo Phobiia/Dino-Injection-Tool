@@ -92,6 +92,10 @@ namespace TheIsle_DinoInjectionTool
         private void UploadSave()
         {
             string strPath = "ftp://" + strFTPAddress + ":" + strPort + "/" + strFTPAddress + "_" + strConnectPort + "/TheIsle/Saved/Databases/Survival/Players/" + strSteamId + ".json";
+            if (chkNitrado.Checked == true)
+            {
+                strPath = "ftp://" + strUsername + "@" + strFTPAddress + "/theisle/TheIsle/Saved/Databases/Survival/Players/" + strSteamId + ".json";
+            }
             string strDownloadPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\TheIsle\\" + strSteamId + ".json";
             try
             {
@@ -336,6 +340,10 @@ namespace TheIsle_DinoInjectionTool
             string strDirPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\TheIsle";
             Directory.CreateDirectory(strDirPath);
             string strPath = "ftp://" + strFTPAddress + ":" + strPort + "/" + strFTPAddress + "_" + strConnectPort + "/TheIsle/Saved/Databases/Survival/Players/" + strSteamId + ".json";
+            if (chkNitrado.Checked == true)
+            {
+                strPath = "ftp://" + strUsername + "@" + strFTPAddress + "/theisle/TheIsle/Saved/Databases/Survival/Players/" + strSteamId + ".json";
+            }
             string strDownloadPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\TheIsle\\" + strSteamId + ".json";
             try
             {
