@@ -53,7 +53,6 @@
             this.rdoSurvival = new System.Windows.Forms.RadioButton();
             this.cboProfile = new System.Windows.Forms.ComboBox();
             this.lblProgress = new System.Windows.Forms.Label();
-            this.chkNitrado = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -83,7 +82,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -113,14 +112,14 @@
             // youtubeTutorialToolStripMenuItem
             // 
             this.youtubeTutorialToolStripMenuItem.Name = "youtubeTutorialToolStripMenuItem";
-            this.youtubeTutorialToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.youtubeTutorialToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.youtubeTutorialToolStripMenuItem.Text = "Youtube Tutorial";
             this.youtubeTutorialToolStripMenuItem.Click += new System.EventHandler(this.youtubeTutorialToolStripMenuItem_Click);
             // 
             // officialDiscordToolStripMenuItem
             // 
             this.officialDiscordToolStripMenuItem.Name = "officialDiscordToolStripMenuItem";
-            this.officialDiscordToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.officialDiscordToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.officialDiscordToolStripMenuItem.Text = "Official Discord";
             this.officialDiscordToolStripMenuItem.Click += new System.EventHandler(this.officialDiscordToolStripMenuItem_Click);
             // 
@@ -306,16 +305,6 @@
             this.lblProgress.Text = "lblProgress";
             this.lblProgress.Visible = false;
             // 
-            // chkNitrado
-            // 
-            this.chkNitrado.AutoSize = true;
-            this.chkNitrado.Location = new System.Drawing.Point(225, 39);
-            this.chkNitrado.Name = "chkNitrado";
-            this.chkNitrado.Size = new System.Drawing.Size(60, 17);
-            this.chkNitrado.TabIndex = 14;
-            this.chkNitrado.Text = "Nitrado";
-            this.chkNitrado.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AcceptButton = this.btnOpen;
@@ -323,7 +312,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClear;
             this.ClientSize = new System.Drawing.Size(314, 309);
-            this.Controls.Add(this.chkNitrado);
             this.Controls.Add(this.lblProgress);
             this.Controls.Add(this.cboProfile);
             this.Controls.Add(this.groupBox2);
@@ -383,7 +371,6 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem youtubeTutorialToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem officialDiscordToolStripMenuItem;
-        private System.Windows.Forms.CheckBox chkNitrado;
     }
 }
 

@@ -43,32 +43,36 @@
             this.txtConnectPort = new System.Windows.Forms.TextBox();
             this.lblConnectPort = new System.Windows.Forms.Label();
             this.cboProfile = new System.Windows.Forms.ComboBox();
+            this.cboServerType = new System.Windows.Forms.ComboBox();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.btnSelectFolder = new System.Windows.Forms.Button();
+            this.txtSelectedFolder = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtPort
             // 
-            this.txtPort.Location = new System.Drawing.Point(98, 75);
+            this.txtPort.Location = new System.Drawing.Point(101, 117);
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(100, 20);
             this.txtPort.TabIndex = 2;
             // 
             // txtFTPAddress
             // 
-            this.txtFTPAddress.Location = new System.Drawing.Point(98, 49);
+            this.txtFTPAddress.Location = new System.Drawing.Point(101, 91);
             this.txtFTPAddress.Name = "txtFTPAddress";
             this.txtFTPAddress.Size = new System.Drawing.Size(100, 20);
             this.txtFTPAddress.TabIndex = 1;
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(98, 101);
+            this.txtUsername.Location = new System.Drawing.Point(101, 143);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(100, 20);
             this.txtUsername.TabIndex = 3;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(98, 127);
+            this.txtPassword.Location = new System.Drawing.Point(101, 169);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(100, 20);
             this.txtPassword.TabIndex = 4;
@@ -77,7 +81,7 @@
             // lblFTP
             // 
             this.lblFTP.AutoSize = true;
-            this.lblFTP.Location = new System.Drawing.Point(49, 52);
+            this.lblFTP.Location = new System.Drawing.Point(52, 94);
             this.lblFTP.Name = "lblFTP";
             this.lblFTP.Size = new System.Drawing.Size(43, 13);
             this.lblFTP.TabIndex = 5;
@@ -86,7 +90,7 @@
             // lblPort
             // 
             this.lblPort.AutoSize = true;
-            this.lblPort.Location = new System.Drawing.Point(40, 78);
+            this.lblPort.Location = new System.Drawing.Point(43, 120);
             this.lblPort.Name = "lblPort";
             this.lblPort.Size = new System.Drawing.Size(52, 13);
             this.lblPort.TabIndex = 6;
@@ -95,7 +99,7 @@
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(34, 104);
+            this.lblUsername.Location = new System.Drawing.Point(37, 146);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(58, 13);
             this.lblUsername.TabIndex = 7;
@@ -104,7 +108,7 @@
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(34, 130);
+            this.lblPassword.Location = new System.Drawing.Point(37, 172);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(56, 13);
             this.lblPassword.TabIndex = 8;
@@ -113,7 +117,7 @@
             // chkRememberMe
             // 
             this.chkRememberMe.AutoSize = true;
-            this.chkRememberMe.Location = new System.Drawing.Point(66, 185);
+            this.chkRememberMe.Location = new System.Drawing.Point(69, 227);
             this.chkRememberMe.Name = "chkRememberMe";
             this.chkRememberMe.Size = new System.Drawing.Size(95, 17);
             this.chkRememberMe.TabIndex = 9;
@@ -123,7 +127,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(41, 236);
+            this.btnSave.Location = new System.Drawing.Point(44, 278);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 10;
@@ -134,7 +138,7 @@
             // btnClear
             // 
             this.btnClear.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClear.Location = new System.Drawing.Point(123, 236);
+            this.btnClear.Location = new System.Drawing.Point(126, 278);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 11;
@@ -145,7 +149,7 @@
             // lblRequired
             // 
             this.lblRequired.AutoSize = true;
-            this.lblRequired.Location = new System.Drawing.Point(71, 209);
+            this.lblRequired.Location = new System.Drawing.Point(74, 251);
             this.lblRequired.Name = "lblRequired";
             this.lblRequired.Size = new System.Drawing.Size(84, 13);
             this.lblRequired.TabIndex = 12;
@@ -154,7 +158,7 @@
             // 
             // txtConnectPort
             // 
-            this.txtConnectPort.Location = new System.Drawing.Point(98, 153);
+            this.txtConnectPort.Location = new System.Drawing.Point(101, 195);
             this.txtConnectPort.Name = "txtConnectPort";
             this.txtConnectPort.Size = new System.Drawing.Size(100, 20);
             this.txtConnectPort.TabIndex = 13;
@@ -162,7 +166,7 @@
             // lblConnectPort
             // 
             this.lblConnectPort.AutoSize = true;
-            this.lblConnectPort.Location = new System.Drawing.Point(6, 156);
+            this.lblConnectPort.Location = new System.Drawing.Point(9, 198);
             this.lblConnectPort.Name = "lblConnectPort";
             this.lblConnectPort.Size = new System.Drawing.Size(86, 13);
             this.lblConnectPort.TabIndex = 14;
@@ -178,11 +182,44 @@
             "Profile 3",
             "Profile 4",
             "Profile 5"});
-            this.cboProfile.Location = new System.Drawing.Point(53, 12);
+            this.cboProfile.Location = new System.Drawing.Point(55, 12);
             this.cboProfile.Name = "cboProfile";
             this.cboProfile.Size = new System.Drawing.Size(121, 21);
             this.cboProfile.TabIndex = 15;
             this.cboProfile.SelectedIndexChanged += new System.EventHandler(this.cboProfile_SelectedIndexChanged);
+            // 
+            // cboServerType
+            // 
+            this.cboServerType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboServerType.FormattingEnabled = true;
+            this.cboServerType.Items.AddRange(new object[] {
+            "PingPerfect",
+            "Nitrado",
+            "Custom Server"});
+            this.cboServerType.Location = new System.Drawing.Point(55, 54);
+            this.cboServerType.Name = "cboServerType";
+            this.cboServerType.Size = new System.Drawing.Size(121, 21);
+            this.cboServerType.TabIndex = 16;
+            this.cboServerType.SelectedIndexChanged += new System.EventHandler(this.CboServerType_SelectedIndexChanged);
+            // 
+            // btnSelectFolder
+            // 
+            this.btnSelectFolder.Location = new System.Drawing.Point(55, 120);
+            this.btnSelectFolder.Name = "btnSelectFolder";
+            this.btnSelectFolder.Size = new System.Drawing.Size(121, 23);
+            this.btnSelectFolder.TabIndex = 17;
+            this.btnSelectFolder.Text = "Select Folder";
+            this.btnSelectFolder.UseVisualStyleBackColor = true;
+            this.btnSelectFolder.Visible = false;
+            this.btnSelectFolder.Click += new System.EventHandler(this.BtnSelectFolder_Click);
+            // 
+            // txtSelectedFolder
+            // 
+            this.txtSelectedFolder.Location = new System.Drawing.Point(55, 91);
+            this.txtSelectedFolder.Name = "txtSelectedFolder";
+            this.txtSelectedFolder.Size = new System.Drawing.Size(121, 20);
+            this.txtSelectedFolder.TabIndex = 18;
+            this.txtSelectedFolder.Visible = false;
             // 
             // frmOptions
             // 
@@ -190,7 +227,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClear;
-            this.ClientSize = new System.Drawing.Size(226, 285);
+            this.ClientSize = new System.Drawing.Size(226, 330);
+            this.Controls.Add(this.txtSelectedFolder);
+            this.Controls.Add(this.btnSelectFolder);
+            this.Controls.Add(this.cboServerType);
             this.Controls.Add(this.cboProfile);
             this.Controls.Add(this.txtConnectPort);
             this.Controls.Add(this.lblConnectPort);
@@ -234,5 +274,9 @@
         private System.Windows.Forms.TextBox txtConnectPort;
         private System.Windows.Forms.Label lblConnectPort;
         private System.Windows.Forms.ComboBox cboProfile;
+        private System.Windows.Forms.ComboBox cboServerType;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Button btnSelectFolder;
+        private System.Windows.Forms.TextBox txtSelectedFolder;
     }
 }
