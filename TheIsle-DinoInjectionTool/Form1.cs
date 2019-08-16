@@ -1241,7 +1241,7 @@ namespace TheIsle_DinoInjectionTool
         }
         private void cmdAbout_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("DIT - Dino Injection Tool" + Environment.NewLine + "By Phobia#0001" + Environment.NewLine + "App Version: 1.2", "About");
+            MessageBox.Show("DIT - Dino Injection Tool" + Environment.NewLine + "By Phobia#0001" + Environment.NewLine + "App Version: 1.3", "About");
         }
         private void youtubeTutorialToolStripMenuItem_Click(object sender, EventArgs e)
         {
