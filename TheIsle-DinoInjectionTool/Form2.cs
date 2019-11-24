@@ -17,44 +17,63 @@ namespace TheIsle_DinoInjectionTool
             InitializeComponent();
             txtFTPAddress.Focus();
             cboProfile.SelectedIndex = 0;
+            cboServerType.SelectedItem = "PingPerfect";
         }
         string strUsername;
         string strPassword;
         string strPort;
         string strFTPAddress;
         string strConnectPort;
+        string strSelectedFolder;
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtFTPAddress.Text) || string.IsNullOrWhiteSpace(txtPassword.Text) || string.IsNullOrWhiteSpace(txtPort.Text) || string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtConnectPort.Text))
+            if (cboServerType.SelectedIndex != 2)
             {
-                lblRequired.Visible = true;
-                if (string.IsNullOrWhiteSpace(txtFTPAddress.Text))
+                if (string.IsNullOrWhiteSpace(txtFTPAddress.Text) || string.IsNullOrWhiteSpace(txtPassword.Text) || string.IsNullOrWhiteSpace(txtPort.Text) || string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtConnectPort.Text))
                 {
-                    lblFTP.Text = "*FTP IP:";
-                    lblFTP.ForeColor = Color.Red;
+                    lblRequired.Visible = true;
+                    if (string.IsNullOrWhiteSpace(txtFTPAddress.Text))
+                    {
+                        lblFTP.Text = "*FTP IP:";
+                        lblFTP.ForeColor = Color.Red;
+                    }
+                    if (string.IsNullOrWhiteSpace(txtPassword.Text))
+                    {
+                        lblPassword.Text = "*Password:";
+                        lblPassword.ForeColor = Color.Red;
+                    }
+                    if (string.IsNullOrWhiteSpace(txtPort.Text))
+                    {
+                        lblPort.Text = "*FTP Port:";
+                        lblPort.ForeColor = Color.Red;
+                    }
+                    if (string.IsNullOrWhiteSpace(txtUsername.Text))
+                    {
+                        lblUsername.Text = "*Username:";
+                        lblUsername.ForeColor = Color.Red;
+                    }
+                    if (string.IsNullOrWhiteSpace(txtConnectPort.Text))
+                    {
+                        lblConnectPort.Text = "*Connection Port:";
+                        lblConnectPort.ForeColor = Color.Red;
+                    }                   
                 }
-                if (string.IsNullOrWhiteSpace(txtPassword.Text))
+                else
                 {
-                    lblPassword.Text = "*Password:";
-                    lblPassword.ForeColor = Color.Red;
+                    strUsername = txtUsername.Text;
+                    strPassword = txtPassword.Text;
+                    strPort = txtPort.Text;
+                    strFTPAddress = txtFTPAddress.Text;
+                    strConnectPort = txtConnectPort.Text;
+                    strSelectedFolder = txtSelectedFolder.Text;
+
+                    ResetLabels();
+                    ProfileSelect();
+                    this.Hide();
+                    return;
                 }
-                if (string.IsNullOrWhiteSpace(txtPort.Text))
-                {
-                    lblPort.Text = "*FTP Port:";
-                    lblPort.ForeColor = Color.Red;
-                }
-                if (string.IsNullOrWhiteSpace(txtUsername.Text))
-                {
-                    lblUsername.Text = "*Username:";
-                    lblUsername.ForeColor = Color.Red;
-                }
-                if (string.IsNullOrWhiteSpace(txtConnectPort.Text))
-                {
-                    lblConnectPort.Text = "*Connection Port:";
-                    lblConnectPort.ForeColor = Color.Red;
-                }
-            }
+            }            
             else
             {
                 strUsername = txtUsername.Text;
@@ -62,6 +81,7 @@ namespace TheIsle_DinoInjectionTool
                 strPort = txtPort.Text;
                 strFTPAddress = txtFTPAddress.Text;
                 strConnectPort = txtConnectPort.Text;
+                strSelectedFolder = txtSelectedFolder.Text;
 
                 ResetLabels();
                 ProfileSelect();                
@@ -94,6 +114,8 @@ namespace TheIsle_DinoInjectionTool
                 txtPassword.Clear();
                 txtPort.Clear();
                 txtUsername.Clear();
+                txtSelectedFolder.Clear();
+                cboServerType.SelectedItem = "PingPerfect";
                 txtFTPAddress.Focus();
                 chkRememberMe.CheckState = CheckState.Unchecked;
 
@@ -106,6 +128,8 @@ namespace TheIsle_DinoInjectionTool
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.Password = null;
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.RememberMe = false;
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort = null;
+                        TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType1 = null;
+                        TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer1 = null;
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.Save();
                         break;
 
@@ -116,6 +140,8 @@ namespace TheIsle_DinoInjectionTool
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.Password2 = null;
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.RememberMe2 = false;
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort2 = null;
+                        TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType2 = null;
+                        TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer2 = null;
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.Save();
                         break;
 
@@ -126,6 +152,8 @@ namespace TheIsle_DinoInjectionTool
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.Password3 = null;
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.RememberMe3 = false;
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort3 = null;
+                        TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType3 = null;
+                        TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer3 = null;
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.Save();
                         break;
 
@@ -136,6 +164,8 @@ namespace TheIsle_DinoInjectionTool
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.Password4 = null;
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.RememberMe4 = false;
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort4 = null;
+                        TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType4 = null;
+                        TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer4 = null;
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.Save();
                         break;
 
@@ -146,6 +176,8 @@ namespace TheIsle_DinoInjectionTool
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.Password5 = null;
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.RememberMe5 = false;
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort5 = null;
+                        TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType5 = null;
+                        TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer5 = null;
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.Save();
                         break;
                 }
@@ -164,7 +196,17 @@ namespace TheIsle_DinoInjectionTool
             txtUsername.Text = TheIsle_DinoInjectionTool.Properties.Settings.Default.Username;
             txtPassword.Text = TheIsle_DinoInjectionTool.Properties.Settings.Default.Password;
             chkRememberMe.Checked = TheIsle_DinoInjectionTool.Properties.Settings.Default.RememberMe;
-            txtConnectPort.Text = TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort;
+            txtConnectPort.Text = TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort;            
+            txtSelectedFolder.Text = TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer1;
+
+            if (TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType1 == null)
+            {
+                cboServerType.SelectedIndex = 0;
+            }
+            else
+            {
+                cboServerType.SelectedItem = TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType1;
+            }
         }
 
         private void ProfileSelect()
@@ -177,6 +219,8 @@ namespace TheIsle_DinoInjectionTool
                     TheIsle_DinoInjectionTool.Properties.Settings.Default.Username = strUsername;
                     TheIsle_DinoInjectionTool.Properties.Settings.Default.Password = strPassword;
                     TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort = strConnectPort;
+                    TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType1 = cboServerType.SelectedItem.ToString();
+                    TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer1 = txtSelectedFolder.Text;
                     if (chkRememberMe.Checked)
                     {
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.RememberMe = true;
@@ -190,6 +234,8 @@ namespace TheIsle_DinoInjectionTool
                     TheIsle_DinoInjectionTool.Properties.Settings.Default.Username2 = strUsername;
                     TheIsle_DinoInjectionTool.Properties.Settings.Default.Password2 = strPassword;
                     TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort2 = strConnectPort;
+                    TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType2 = cboServerType.SelectedItem.ToString();
+                    TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer2 = txtSelectedFolder.Text;
                     if (chkRememberMe.Checked)
                     {
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.RememberMe2 = true;
@@ -203,6 +249,8 @@ namespace TheIsle_DinoInjectionTool
                     TheIsle_DinoInjectionTool.Properties.Settings.Default.Username3 = strUsername;
                     TheIsle_DinoInjectionTool.Properties.Settings.Default.Password3 = strPassword;
                     TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort3 = strConnectPort;
+                    TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType3 = cboServerType.SelectedItem.ToString();
+                    TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer3 = txtSelectedFolder.Text;
                     if (chkRememberMe.Checked)
                     {
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.RememberMe3 = true;
@@ -216,6 +264,8 @@ namespace TheIsle_DinoInjectionTool
                     TheIsle_DinoInjectionTool.Properties.Settings.Default.Username4 = strUsername;
                     TheIsle_DinoInjectionTool.Properties.Settings.Default.Password4 = strPassword;
                     TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort4 = strConnectPort;
+                    TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType4 = cboServerType.SelectedItem.ToString();
+                    TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer4 = txtSelectedFolder.Text;
                     if (chkRememberMe.Checked)
                     {
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.RememberMe4 = true;
@@ -229,6 +279,8 @@ namespace TheIsle_DinoInjectionTool
                     TheIsle_DinoInjectionTool.Properties.Settings.Default.Username5 = strUsername;
                     TheIsle_DinoInjectionTool.Properties.Settings.Default.Password5 = strPassword;
                     TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort5 = strConnectPort;
+                    TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType5 = cboServerType.SelectedItem.ToString();
+                    TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer5 = txtSelectedFolder.Text;
                     if (chkRememberMe.Checked)
                     {
                         TheIsle_DinoInjectionTool.Properties.Settings.Default.RememberMe5 = true;
@@ -249,6 +301,8 @@ namespace TheIsle_DinoInjectionTool
                     txtPassword.Text = TheIsle_DinoInjectionTool.Properties.Settings.Default.Password;
                     chkRememberMe.Checked = TheIsle_DinoInjectionTool.Properties.Settings.Default.RememberMe;
                     txtConnectPort.Text = TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort;
+                    cboServerType.SelectedItem = TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType1;
+                    txtSelectedFolder.Text = TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer1;
                     break;
 
                 case 1:
@@ -258,6 +312,8 @@ namespace TheIsle_DinoInjectionTool
                     txtPassword.Text = TheIsle_DinoInjectionTool.Properties.Settings.Default.Password2;
                     chkRememberMe.Checked = TheIsle_DinoInjectionTool.Properties.Settings.Default.RememberMe2;
                     txtConnectPort.Text = TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort2;
+                    cboServerType.SelectedItem = TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType2;
+                    txtSelectedFolder.Text = TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer2;
                     break;
 
                 case 2:
@@ -267,6 +323,8 @@ namespace TheIsle_DinoInjectionTool
                     txtPassword.Text = TheIsle_DinoInjectionTool.Properties.Settings.Default.Password3;
                     chkRememberMe.Checked = TheIsle_DinoInjectionTool.Properties.Settings.Default.RememberMe3;
                     txtConnectPort.Text = TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort3;
+                    cboServerType.SelectedItem = TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType3;
+                    txtSelectedFolder.Text = TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer3;
                     break;
 
                 case 3:
@@ -276,6 +334,8 @@ namespace TheIsle_DinoInjectionTool
                     txtPassword.Text = TheIsle_DinoInjectionTool.Properties.Settings.Default.Password4;
                     chkRememberMe.Checked = TheIsle_DinoInjectionTool.Properties.Settings.Default.RememberMe4;
                     txtConnectPort.Text = TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort4;
+                    cboServerType.SelectedItem = TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType4;
+                    txtSelectedFolder.Text = TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer4;
                     break;
 
                 case 4:
@@ -285,9 +345,57 @@ namespace TheIsle_DinoInjectionTool
                     txtPassword.Text = TheIsle_DinoInjectionTool.Properties.Settings.Default.Password5;
                     chkRememberMe.Checked = TheIsle_DinoInjectionTool.Properties.Settings.Default.RememberMe5;
                     txtConnectPort.Text = TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort5;
+                    cboServerType.SelectedItem = TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType5;
+                    txtSelectedFolder.Text = TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer5;
                     break;
             }
 
+        }
+
+        private void CboServerType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboServerType.SelectedIndex == 2)
+            {
+                lblConnectPort.Visible = false;
+                lblFTP.Visible = false;
+                lblPassword.Visible = false;
+                lblPort.Visible = false;
+                lblRequired.Visible = false;
+                lblUsername.Visible = false;
+                txtConnectPort.Visible = false;
+                txtFTPAddress.Visible = false;
+                txtPassword.Visible = false;
+                txtPort.Visible = false;
+                txtUsername.Visible = false;
+
+                btnSelectFolder.Visible = true;
+                txtSelectedFolder.Visible = true;
+            }
+            else
+            {
+                lblConnectPort.Visible = true;
+                lblFTP.Visible = true;
+                lblPassword.Visible = true;
+                lblPort.Visible = true;
+                lblRequired.Visible = true;
+                lblUsername.Visible = true;
+                txtConnectPort.Visible = true;
+                txtFTPAddress.Visible = true;
+                txtPassword.Visible = true;
+                txtPort.Visible = true;
+                txtUsername.Visible = true;
+
+                btnSelectFolder.Visible = false;
+                txtSelectedFolder.Visible = false;
+            }
+        }
+
+        private void BtnSelectFolder_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                txtSelectedFolder.Text = folderBrowserDialog1.SelectedPath;
+            }
         }
     }
 }
