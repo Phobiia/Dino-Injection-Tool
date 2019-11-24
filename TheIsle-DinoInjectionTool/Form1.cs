@@ -145,7 +145,7 @@ namespace TheIsle_DinoInjectionTool
                     strNewClass = "Spino";
                     break;
                 case "Velociraptor":
-                    strNewClass = "Velociraptor";
+                    strNewClass = "Velo";
                     break;
                 case "Anky":
                     strNewClass = "Anky";
@@ -366,7 +366,14 @@ namespace TheIsle_DinoInjectionTool
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error Connecting to FTP Server. Ensure Server Information and Steam ID is Correct " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (ex.ToString().Contains("error: (550)"))
+                {
+                    MessageBox.Show("Error accesing file, run the program as ADMIN", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Error Connecting to FTP Server. Ensure Server Information and Steam ID is Correct " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }               
             }
         }
         private void ReadFile(string strPath)
@@ -1210,7 +1217,7 @@ namespace TheIsle_DinoInjectionTool
         }
         private void cmdAbout_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("DIT - Dino Injection Tool" + Environment.NewLine + "By Phobia#0001" + Environment.NewLine + "App Version: 1.2", "About");
+            MessageBox.Show("DIT - Dino Injection Tool" + Environment.NewLine + "By Phobia#9668" + Environment.NewLine + "App Version: 1.3", "About");
         }
         private void youtubeTutorialToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1218,7 +1225,7 @@ namespace TheIsle_DinoInjectionTool
         }
         private void officialDiscordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://discord.gg/dtHw4gn");
+            System.Diagnostics.Process.Start("https://discord.gg/mpN3zs9");
         }
 
         #endregion
