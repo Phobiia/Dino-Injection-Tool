@@ -50,6 +50,7 @@ namespace TheIsle_DinoInjectionTool
         string strLegBreak = "false";
         string strYPosition = "";
         decimal decYPosition = 0;
+        bool bIsBig = false;
         bool bIsOpen = false;
 
         string strNewClass = "";
@@ -131,6 +132,7 @@ namespace TheIsle_DinoInjectionTool
 
                     bIsOpen = false;
                     lblProgress.Text = "Upload Complete!";
+                    bIsBig = false;
                 }
                 catch (Exception ex)
                 {
@@ -144,18 +146,22 @@ namespace TheIsle_DinoInjectionTool
             {
                 case "Acro":
                     strNewClass = "Acro";
+                    bIsBig = true;
                     break;
                 case "Albert":
                     strNewClass = "Albert";
+                    bIsBig = true;
                     break;
                 case "Bary":
                     strNewClass = "Bary";
+                    bIsBig = true;
                     break;
                 case "Herrera":
                     strNewClass = "Herrera";
                     break;
                 case "Spino":
                     strNewClass = "Spino";
+                    bIsBig = true;
                     break;
                 case "Velociraptor":
                     strNewClass = "Velo";
@@ -171,6 +177,7 @@ namespace TheIsle_DinoInjectionTool
                     break;
                 case "Camara":
                     strNewClass = "Camara";
+                    bIsBig = true;
                     break;
                 case "Oro":
                     strNewClass = "Oro";
@@ -180,15 +187,18 @@ namespace TheIsle_DinoInjectionTool
                     break;
                 case "Puerta":
                     strNewClass = "Puerta";
+                    bIsBig = true;
                     break;
                 case "Shant":
                     strNewClass = "Shant";
+                    bIsBig = true;
                     break;
                 case "Stego":
                     strNewClass = "Stego";
                     break;
                 case "Theri":
                     strNewClass = "Theri";
+                    bIsBig = true;
                     break;
                 case "Allo - Adult":
                     strNewClass = "AlloAdultS";
@@ -231,6 +241,7 @@ namespace TheIsle_DinoInjectionTool
                     break;
                 case "Giga - Adult":
                     strNewClass = "GigaAdultS";
+                    bIsBig = true;
                     break;
                 case "Giga - Sub":
                     strNewClass = "GigaSubS";
@@ -252,6 +263,7 @@ namespace TheIsle_DinoInjectionTool
                     break;
                 case "Rex - Adult":
                     strNewClass = "RexAdultS";
+                    bIsBig = true;
                     break;
                 case "Rex - Sub":
                     strNewClass = "RexSubS";
@@ -348,6 +360,7 @@ namespace TheIsle_DinoInjectionTool
         }
         private void ConnectToServer()
         {
+            bIsBig = false;
             strSteamId = txtSteamID.Text;
             strSteamId = strSteamId.Trim(new char[] { ' ', '.' });
             string strDirPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\TheIsle";
@@ -862,8 +875,14 @@ namespace TheIsle_DinoInjectionTool
                 int len = strSub.Length;
                 bool dec = Decimal.TryParse(strSub, out decYPosition);
 
-                decYPosition = decYPosition + 6;
-
+                if (bIsBig)
+                {
+                    decYPosition = decYPosition + 5;
+                }
+                else 
+                {
+                    decYPosition = decYPosition + 3;
+                }
                 strNewYPosition = strYPosition.Replace(strYPosition.Substring(index + 2, len), decYPosition.ToString());
             }
             else
@@ -882,7 +901,14 @@ namespace TheIsle_DinoInjectionTool
                 int len = strSub.Length;
                 bool dec = Decimal.TryParse(strSub, out decYPosition);
 
-                decYPosition = decYPosition + 6;
+                if (bIsBig)
+                {
+                    decYPosition = decYPosition + 5;
+                }
+                else 
+                {
+                    decYPosition = decYPosition + 3;
+                }
 
                 strNewYPosition = strYPosition.Replace(strYPosition.Substring(index + 2, len), decYPosition.ToString());
             }
