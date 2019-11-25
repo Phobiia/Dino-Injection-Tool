@@ -862,7 +862,7 @@ namespace TheIsle_DinoInjectionTool
                 int len = strSub.Length;
                 bool dec = Decimal.TryParse(strSub, out decYPosition);
 
-                decYPosition = decYPosition + 3;
+                decYPosition = decYPosition + 6;
 
                 strNewYPosition = strYPosition.Replace(strYPosition.Substring(index + 2, len), decYPosition.ToString());
             }
@@ -882,7 +882,7 @@ namespace TheIsle_DinoInjectionTool
                 int len = strSub.Length;
                 bool dec = Decimal.TryParse(strSub, out decYPosition);
 
-                decYPosition = decYPosition + 3;
+                decYPosition = decYPosition + 6;
 
                 strNewYPosition = strYPosition.Replace(strYPosition.Substring(index + 2, len), decYPosition.ToString());
             }
@@ -1248,7 +1248,7 @@ namespace TheIsle_DinoInjectionTool
         }
         private void cmdAbout_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("DIT - Dino Injection Tool" + Environment.NewLine + "By Phobia#9668" + Environment.NewLine + "App Version: 1.4", "About");
+            MessageBox.Show("DIT - Dino Injection Tool" + Environment.NewLine + "By Phobia#9668" + Environment.NewLine + "App Version: 1.5", "About");
         }
         private void youtubeTutorialToolStripMenuItem_Click(object sender, EventArgs e)
         {
