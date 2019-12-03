@@ -15,6 +15,7 @@ namespace TheIsle_DinoInjectionTool
         {
 
             InitializeComponent();
+            btnOpen.Text = "Open";
 
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -90,6 +91,65 @@ namespace TheIsle_DinoInjectionTool
             {
                 MessageBox.Show("Error: Editing Save " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void DeleteSave()
+        {
+            strSteamId = txtSteamID.Text;
+            strSteamId = strSteamId.Trim(new char[] { ' ', '.' });
+            if (strServerType != "Custom Server")
+            {
+                string strPath = "";
+                string status = "";
+                if (strServerType == "Nitrado")
+                {
+                    strPath = "ftp://" + strUsername + "@" + strFTPAddress + "/theisle/TheIsle/Saved/Databases/Survival/Players/" + strSteamId + ".json";
+                }
+                else if (strServerType == "PingPerfect")
+                {
+                    strPath = "ftp://" + strFTPAddress + ":" + strPort + "/" + strFTPAddress + "_" + strConnectPort + "/TheIsle/Saved/Databases/Survival/Players/" + strSteamId + ".json";
+                }
+                try
+                {
+                    FtpWebRequest request = (FtpWebRequest)WebRequest.Create(strPath);
+                    request.Credentials = new NetworkCredential(strUsername, strPassword);
+                    request.Method = WebRequestMethods.Ftp.DeleteFile;
+                    FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+                    status = response.StatusDescription;
+                    response.Close();                    
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error Deleting Save from FTP Server. Ensure Server Information and Steam ID is Correct " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    bIsOpen = false;
+                    lblProgress.Text = "Save Deleted";
+                    btnOpen.Text = "Open";
+                }
+            }
+            else
+            {
+                strSteamId = txtSteamID.Text;
+                strSteamId = strSteamId.Trim(new char[] { ' ', '.' });
+                try
+                {
+                    if (File.Exists(strCustomServerFolder + "\\" + strSteamId + ".json"))
+                    {
+                        File.Delete(strCustomServerFolder + "\\" + strSteamId + ".json");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error Deleting Save. Ensure Server Information and Steam ID is Correct, or Run as ADMIN " + ex, "Error");
+                }
+                finally
+                {
+                    bIsOpen = false;
+                    lblProgress.Text = "Save Deleted!";
+                    btnOpen.Text = "Open";
+                }
+            }           
         }
         private void UploadSave()
         {
@@ -397,7 +457,7 @@ namespace TheIsle_DinoInjectionTool
             {
                 if (ex.ToString().Contains("error: (550)"))
                 {
-                    MessageBox.Show("Error accesing file, run the program as ADMIN", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error accesing file, run the program as ADMIN, or File Does Not Exist!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -836,6 +896,7 @@ namespace TheIsle_DinoInjectionTool
             }
             bIsOpen = true;
             lblProgress.Visible = true;
+            btnOpen.Text = "Delete Save";
             lblProgress.Text = "Save Opened!";
         }        
         #endregion
@@ -1170,83 +1231,98 @@ namespace TheIsle_DinoInjectionTool
         }
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            lblProgress.Visible = false;
-            switch (cboProfile.SelectedIndex)
+            if (btnOpen.Text == "Open")
             {
-                case 0:
-                    strUsername = TheIsle_DinoInjectionTool.Properties.Settings.Default.Username;
-                    strPassword = TheIsle_DinoInjectionTool.Properties.Settings.Default.Password;
-                    strPort = TheIsle_DinoInjectionTool.Properties.Settings.Default.Port;
-                    strFTPAddress = TheIsle_DinoInjectionTool.Properties.Settings.Default.FTPAddress;
-                    strConnectPort = TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort;
-                    strServerType = TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType1;
-                    strCustomServerFolder = TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer1;
-                    break;
-                case 1:
-                    strUsername = TheIsle_DinoInjectionTool.Properties.Settings.Default.Username2;
-                    strPassword = TheIsle_DinoInjectionTool.Properties.Settings.Default.Password2;
-                    strPort = TheIsle_DinoInjectionTool.Properties.Settings.Default.Port2;
-                    strFTPAddress = TheIsle_DinoInjectionTool.Properties.Settings.Default.FTPAddress2;
-                    strConnectPort = TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort2;
-                    strServerType = TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType2;
-                    strCustomServerFolder = TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer2;
-                    break;
-                case 2:
-                    strUsername = TheIsle_DinoInjectionTool.Properties.Settings.Default.Username3;
-                    strPassword = TheIsle_DinoInjectionTool.Properties.Settings.Default.Password3;
-                    strPort = TheIsle_DinoInjectionTool.Properties.Settings.Default.Port3;
-                    strFTPAddress = TheIsle_DinoInjectionTool.Properties.Settings.Default.FTPAddress3;
-                    strConnectPort = TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort3;
-                    strServerType = TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType3;
-                    strCustomServerFolder = TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer3;
-                    break;
-                case 3:
-                    strUsername = TheIsle_DinoInjectionTool.Properties.Settings.Default.Username4;
-                    strPassword = TheIsle_DinoInjectionTool.Properties.Settings.Default.Password4;
-                    strPort = TheIsle_DinoInjectionTool.Properties.Settings.Default.Port4;
-                    strFTPAddress = TheIsle_DinoInjectionTool.Properties.Settings.Default.FTPAddress4;
-                    strConnectPort = TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort4;
-                    strServerType = TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType4;
-                    strCustomServerFolder = TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer4;
-                    break;
-                case 4:
-                    strUsername = TheIsle_DinoInjectionTool.Properties.Settings.Default.Username5;
-                    strPassword = TheIsle_DinoInjectionTool.Properties.Settings.Default.Password5;
-                    strPort = TheIsle_DinoInjectionTool.Properties.Settings.Default.Port5;
-                    strFTPAddress = TheIsle_DinoInjectionTool.Properties.Settings.Default.FTPAddress5;
-                    strConnectPort = TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort5;
-                    strServerType = TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType5;
-                    strCustomServerFolder = TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer5;
-                    break;
-            }
-
-            if (strServerType != "Custom Server" && (string.IsNullOrWhiteSpace(strUsername) || string.IsNullOrWhiteSpace(strPort) || string.IsNullOrWhiteSpace(strFTPAddress) || string.IsNullOrWhiteSpace(strPassword) || string.IsNullOrWhiteSpace(strConnectPort)))
-            {
-                Form options = new frmOptions();
-                options.StartPosition = FormStartPosition.CenterParent;
-                options.ShowDialog();
-            }
-            else if (strServerType == "Custom Server" && string.IsNullOrWhiteSpace(strCustomServerFolder))
-            {
-                Form options = new frmOptions();
-                options.StartPosition = FormStartPosition.CenterParent;
-                options.ShowDialog();
-            }
-            else
-            {
-                if (string.IsNullOrWhiteSpace(txtSteamID.Text))
+                lblProgress.Visible = false;
+                switch (cboProfile.SelectedIndex)
                 {
-                    MessageBox.Show("Enter Steam ID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    case 0:
+                        strUsername = TheIsle_DinoInjectionTool.Properties.Settings.Default.Username;
+                        strPassword = TheIsle_DinoInjectionTool.Properties.Settings.Default.Password;
+                        strPort = TheIsle_DinoInjectionTool.Properties.Settings.Default.Port;
+                        strFTPAddress = TheIsle_DinoInjectionTool.Properties.Settings.Default.FTPAddress;
+                        strConnectPort = TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort;
+                        strServerType = TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType1;
+                        strCustomServerFolder = TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer1;
+                        break;
+                    case 1:
+                        strUsername = TheIsle_DinoInjectionTool.Properties.Settings.Default.Username2;
+                        strPassword = TheIsle_DinoInjectionTool.Properties.Settings.Default.Password2;
+                        strPort = TheIsle_DinoInjectionTool.Properties.Settings.Default.Port2;
+                        strFTPAddress = TheIsle_DinoInjectionTool.Properties.Settings.Default.FTPAddress2;
+                        strConnectPort = TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort2;
+                        strServerType = TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType2;
+                        strCustomServerFolder = TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer2;
+                        break;
+                    case 2:
+                        strUsername = TheIsle_DinoInjectionTool.Properties.Settings.Default.Username3;
+                        strPassword = TheIsle_DinoInjectionTool.Properties.Settings.Default.Password3;
+                        strPort = TheIsle_DinoInjectionTool.Properties.Settings.Default.Port3;
+                        strFTPAddress = TheIsle_DinoInjectionTool.Properties.Settings.Default.FTPAddress3;
+                        strConnectPort = TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort3;
+                        strServerType = TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType3;
+                        strCustomServerFolder = TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer3;
+                        break;
+                    case 3:
+                        strUsername = TheIsle_DinoInjectionTool.Properties.Settings.Default.Username4;
+                        strPassword = TheIsle_DinoInjectionTool.Properties.Settings.Default.Password4;
+                        strPort = TheIsle_DinoInjectionTool.Properties.Settings.Default.Port4;
+                        strFTPAddress = TheIsle_DinoInjectionTool.Properties.Settings.Default.FTPAddress4;
+                        strConnectPort = TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort4;
+                        strServerType = TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType4;
+                        strCustomServerFolder = TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer4;
+                        break;
+                    case 4:
+                        strUsername = TheIsle_DinoInjectionTool.Properties.Settings.Default.Username5;
+                        strPassword = TheIsle_DinoInjectionTool.Properties.Settings.Default.Password5;
+                        strPort = TheIsle_DinoInjectionTool.Properties.Settings.Default.Port5;
+                        strFTPAddress = TheIsle_DinoInjectionTool.Properties.Settings.Default.FTPAddress5;
+                        strConnectPort = TheIsle_DinoInjectionTool.Properties.Settings.Default.ConnectPort5;
+                        strServerType = TheIsle_DinoInjectionTool.Properties.Settings.Default.ServerType5;
+                        strCustomServerFolder = TheIsle_DinoInjectionTool.Properties.Settings.Default.CustomServer5;
+                        break;
                 }
-                else if (strServerType == "Custom Server")
+
+                if (strServerType != "Custom Server" && (string.IsNullOrWhiteSpace(strUsername) || string.IsNullOrWhiteSpace(strPort) || string.IsNullOrWhiteSpace(strFTPAddress) || string.IsNullOrWhiteSpace(strPassword) || string.IsNullOrWhiteSpace(strConnectPort)))
                 {
-                    strSteamId = txtSteamID.Text;
-                    strSteamId = strSteamId.Trim(new char[] { ' ', '.' });
-                    ReadFile(strCustomServerFolder + "\\" + strSteamId + ".json");
+                    Form options = new frmOptions();
+                    options.StartPosition = FormStartPosition.CenterParent;
+                    options.ShowDialog();
+                }
+                else if (strServerType == "Custom Server" && string.IsNullOrWhiteSpace(strCustomServerFolder))
+                {
+                    Form options = new frmOptions();
+                    options.StartPosition = FormStartPosition.CenterParent;
+                    options.ShowDialog();
                 }
                 else
                 {
-                    ConnectToServer();
+                    if (string.IsNullOrWhiteSpace(txtSteamID.Text))
+                    {
+                        MessageBox.Show("Enter Steam ID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (strServerType == "Custom Server")
+                    {
+                        strSteamId = txtSteamID.Text;
+                        strSteamId = strSteamId.Trim(new char[] { ' ', '.' });
+                        ReadFile(strCustomServerFolder + "\\" + strSteamId + ".json");
+                    }
+                    else
+                    {
+                        ConnectToServer();
+                    }
+                }
+            }
+            else if (btnOpen.Text == "Delete Save")
+            {
+                DialogResult result = MessageBox.Show("This will completely reset the players save. This should only be used if an injection failed and the player cannot select a new dino! Are you sure you want to continue?", "WARNING - Delete Save?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if(result == DialogResult.Yes)
+                {
+                    DeleteSave();
+                }
+                else
+                {
+                    return;
                 }
             }
         }
@@ -1271,10 +1347,11 @@ namespace TheIsle_DinoInjectionTool
             txtSteamID.Clear();
             txtSteamID.Focus();
             bIsOpen = false;
+            btnOpen.Text = "Open";
         }
         private void cmdAbout_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("DIT - Dino Injection Tool" + Environment.NewLine + "By Phobia#9668" + Environment.NewLine + "App Version: 1.5", "About");
+            MessageBox.Show("DIT - Dino Injection Tool" + Environment.NewLine + "By Phobia#9668" + Environment.NewLine + "App Version: 1.6", "About");
         }
         private void youtubeTutorialToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1284,10 +1361,14 @@ namespace TheIsle_DinoInjectionTool
         {
             System.Diagnostics.Process.Start("https://discord.gg/mpN3zs9");
         }
-
+        private void txtSteamID_TextChanged(object sender, EventArgs e)
+        {
+            if (bIsOpen)
+            {
+                btnOpen.Text = "Open";
+            }
+        }
         #endregion
-
-
     }
 
 }

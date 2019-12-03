@@ -82,7 +82,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -112,14 +112,14 @@
             // youtubeTutorialToolStripMenuItem
             // 
             this.youtubeTutorialToolStripMenuItem.Name = "youtubeTutorialToolStripMenuItem";
-            this.youtubeTutorialToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.youtubeTutorialToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.youtubeTutorialToolStripMenuItem.Text = "Youtube Tutorial";
             this.youtubeTutorialToolStripMenuItem.Click += new System.EventHandler(this.youtubeTutorialToolStripMenuItem_Click);
             // 
             // officialDiscordToolStripMenuItem
             // 
             this.officialDiscordToolStripMenuItem.Name = "officialDiscordToolStripMenuItem";
-            this.officialDiscordToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.officialDiscordToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.officialDiscordToolStripMenuItem.Text = "Official Discord";
             this.officialDiscordToolStripMenuItem.Click += new System.EventHandler(this.officialDiscordToolStripMenuItem_Click);
             // 
@@ -139,6 +139,7 @@
             this.txtSteamID.Name = "txtSteamID";
             this.txtSteamID.Size = new System.Drawing.Size(132, 20);
             this.txtSteamID.TabIndex = 2;
+            this.txtSteamID.TextChanged += new System.EventHandler(this.txtSteamID_TextChanged);
             // 
             // label1
             // 
