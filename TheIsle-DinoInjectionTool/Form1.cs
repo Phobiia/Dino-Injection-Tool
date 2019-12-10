@@ -158,6 +158,7 @@ namespace TheIsle_DinoInjectionTool
             {
                 bIsOpen = false;
                 lblProgress.Text = "Upload Complete!";
+                btnOpen.Text = "Open";
             }
             else
             {
@@ -192,6 +193,7 @@ namespace TheIsle_DinoInjectionTool
 
                     bIsOpen = false;
                     lblProgress.Text = "Upload Complete!";
+                    btnOpen.Text = "Open";
                     bIsBig = false;
                 }
                 catch (Exception ex)
