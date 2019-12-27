@@ -82,7 +82,7 @@ namespace TheIsle_DinoInjectionTool
                 text = text.Replace("\t\"Health\": \"" + strHealth + "\",", "\t\"Health\": \"99999\",");
                 text = text.Replace("\t\"BleedingRate\": \"" + strBleedRate + "\",", "\t\"BleedingRate\": \"0\",");
                 text = text.Replace("\t\"bBrokenLegs\": " + strLegBreak + ",", "\t\"bBrokenLegs\": false,");
-                text = text.Replace(strYPosition, strNewYPosition);
+                //text = text.Replace(strYPosition, strNewYPosition);
                 File.WriteAllText(strDownloadPath, text);
 
                 UploadSave();
@@ -533,7 +533,7 @@ namespace TheIsle_DinoInjectionTool
 
                 FormatClass();
                 FormatGender();
-                FormatY();
+                //FormatY();
                 FormatGrowth();
                 FormatHunger();
                 FormatThirst();
@@ -1353,7 +1353,7 @@ namespace TheIsle_DinoInjectionTool
         }
         private void cmdAbout_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("DIT - Dino Injection Tool" + Environment.NewLine + "By Phobia#9668" + Environment.NewLine + "App Version: 1.7", "About");
+            MessageBox.Show("DIT - Dino Injection Tool" + Environment.NewLine + "By Phobia#9668" + Environment.NewLine + "App Version: 1.8", "About");
         }
         private void youtubeTutorialToolStripMenuItem_Click(object sender, EventArgs e)
         {
