@@ -47,6 +47,7 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.btnSelectFolder = new System.Windows.Forms.Button();
             this.txtSelectedFolder = new System.Windows.Forms.TextBox();
+            this.lblHostname = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtPort
@@ -221,6 +222,16 @@
             this.txtSelectedFolder.TabIndex = 3;
             this.txtSelectedFolder.Visible = false;
             // 
+            // lblHostname
+            // 
+            this.lblHostname.AutoSize = true;
+            this.lblHostname.Location = new System.Drawing.Point(14, 94);
+            this.lblHostname.Name = "lblHostname";
+            this.lblHostname.Size = new System.Drawing.Size(81, 13);
+            this.lblHostname.TabIndex = 18;
+            this.lblHostname.Text = "FTP Hostname:";
+            this.lblHostname.Visible = false;
+            // 
             // frmOptions
             // 
             this.AcceptButton = this.btnSave;
@@ -228,6 +239,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClear;
             this.ClientSize = new System.Drawing.Size(226, 330);
+            this.Controls.Add(this.lblHostname);
             this.Controls.Add(this.txtSelectedFolder);
             this.Controls.Add(this.btnSelectFolder);
             this.Controls.Add(this.cboServerType);
@@ -278,5 +290,6 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button btnSelectFolder;
         private System.Windows.Forms.TextBox txtSelectedFolder;
+        private System.Windows.Forms.Label lblHostname;
     }
 }

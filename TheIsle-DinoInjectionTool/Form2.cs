@@ -367,11 +367,32 @@ namespace TheIsle_DinoInjectionTool
                 txtPassword.Visible = false;
                 txtPort.Visible = false;
                 txtUsername.Visible = false;
+                lblHostname.Visible = false;
 
                 btnSelectFolder.Visible = true;
                 txtSelectedFolder.Visible = true;
+                                
             }
-            else
+            else if (cboServerType.SelectedIndex == 1)
+            {
+                lblConnectPort.Visible = false;
+                lblFTP.Visible = false;
+                lblPassword.Visible = true;
+                lblPort.Visible = true;
+                lblRequired.Visible = true;
+                lblUsername.Visible = true;
+                txtConnectPort.Visible = false;
+                txtFTPAddress.Visible = true;
+                txtPassword.Visible = true;
+                txtPort.Visible = true;
+                txtUsername.Visible = true;
+                lblHostname.Visible = true;
+
+                btnSelectFolder.Visible = false;
+                txtSelectedFolder.Visible = false;
+
+            }
+            else if (cboServerType.SelectedIndex == 0)
             {
                 lblConnectPort.Visible = true;
                 lblFTP.Visible = true;
@@ -384,9 +405,11 @@ namespace TheIsle_DinoInjectionTool
                 txtPassword.Visible = true;
                 txtPort.Visible = true;
                 txtUsername.Visible = true;
+                lblHostname.Visible = false;
 
                 btnSelectFolder.Visible = false;
                 txtSelectedFolder.Visible = false;
+
             }
         }
 
