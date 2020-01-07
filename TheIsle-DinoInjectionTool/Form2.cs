@@ -30,7 +30,7 @@ namespace TheIsle_DinoInjectionTool
         {
             if (cboServerType.SelectedIndex != 2)
             {
-                if (string.IsNullOrWhiteSpace(txtFTPAddress.Text) || string.IsNullOrWhiteSpace(txtPassword.Text) || string.IsNullOrWhiteSpace(txtPort.Text) || string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtConnectPort.Text))
+                if ((string.IsNullOrWhiteSpace(txtFTPAddress.Text) || string.IsNullOrWhiteSpace(txtPassword.Text) || string.IsNullOrWhiteSpace(txtPort.Text) || string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtConnectPort.Text)) && cboServerType.SelectedIndex == 0)
                 {
                     lblRequired.Visible = true;
                     if (string.IsNullOrWhiteSpace(txtFTPAddress.Text))
@@ -58,6 +58,30 @@ namespace TheIsle_DinoInjectionTool
                         lblConnectPort.Text = "*Connection Port:";
                         lblConnectPort.ForeColor = Color.Red;
                     }                   
+                }
+                else if ((string.IsNullOrWhiteSpace(txtFTPAddress.Text) || string.IsNullOrWhiteSpace(txtPassword.Text) || string.IsNullOrWhiteSpace(txtPort.Text) || string.IsNullOrWhiteSpace(txtUsername.Text)) && cboServerType.SelectedIndex == 1)
+                {
+                    lblRequired.Visible = true;
+                    if (string.IsNullOrWhiteSpace(txtFTPAddress.Text))
+                    {
+                        lblFTP.Text = "*FTP IP:";
+                        lblFTP.ForeColor = Color.Red;
+                    }
+                    if (string.IsNullOrWhiteSpace(txtPassword.Text))
+                    {
+                        lblPassword.Text = "*Password:";
+                        lblPassword.ForeColor = Color.Red;
+                    }
+                    if (string.IsNullOrWhiteSpace(txtPort.Text))
+                    {
+                        lblPort.Text = "*FTP Port:";
+                        lblPort.ForeColor = Color.Red;
+                    }
+                    if (string.IsNullOrWhiteSpace(txtUsername.Text))
+                    {
+                        lblUsername.Text = "*Username:";
+                        lblUsername.ForeColor = Color.Red;
+                    }
                 }
                 else
                 {
